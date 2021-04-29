@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'inheriteddemo/counter_inherited.dart';
 import 'mobxdemo/mobxcounter.dart';
 
 void main() {
@@ -10,8 +11,10 @@ void main() {
 
 class Routers {
   static String Mobx = 'mobx';
+  static String Inherited = 'inherited';
   static var routers = {
-  Routers.Mobx: (context) => MobxDemo()
+  Routers.Mobx: (context) => MobxDemo(),
+  Routers.Inherited:(context) => CounterInherited(),
   };
 }
 
