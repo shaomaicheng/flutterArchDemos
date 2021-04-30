@@ -3,10 +3,12 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'counter_mobx.dart';
 import 'package:mobx/mobx.dart';
 
+MCounter mcounter = MCounter();  // 跨页面的话 store 需要最好用 provider 管理
+
 class MobxDemo extends StatelessWidget {
-  MCounter mcounter = MCounter();  // 跨页面的话 store 需要最好用 provider 管理
   @override
   Widget build(BuildContext context) {
+    debugPrint('MobxDemo#build');
     autorun((reaction) {
       // 每次都执行 effect
       debugPrint('autorun:${mcounter.counter}');
@@ -27,24 +29,43 @@ class MobxDemo extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Container(
-              child: Observer(
-                builder: (ctx) => Text(
-                    mcounter.counter.toString()
-                ),
-              )
-          ),
-          Align(
-            alignment: Alignment.topRight,
-            child: FloatingActionButton(onPressed: () {
-              // 自增
-              mcounter.incream();
-            },
-            child: Icon(Icons.plus_one),),
-          )
+          _MobxCounterText(),
+          _MobxCounterButton()
         ],
       ),
     );
   }
+
+}
+
+class _MobxCounterText extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    debugPrint('_MobxCounterText#build');
+    return Container(
+        child: Observer(
+          builder: (ctx) => Text(
+              mcounter.counter.toString()
+          ),
+        )
+    );
+  }
+
+}
+
+class _MobxCounterButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    debugPrint('_MobxCounterButton#build');
+    return Align(
+      alignment: Alignment.topRight,
+      child: FloatingActionButton(onPressed: () {
+        // 自增
+        mcounter.incream();
+      },
+        child: Icon(Icons.plus_one),),
+    );
+  }
+
 
 }
