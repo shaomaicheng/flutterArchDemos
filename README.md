@@ -39,6 +39,7 @@ flutter pub run build_runner build
 
 ### Mobx
 前端有相同对应框架
+
 *优点*
 * 简单，API少
 
@@ -56,6 +57,7 @@ flutter pub run build_runner build
 
 ### Riverpod
 Provider、hooks的同一个作者开发的新框架
+
 *优点*
 * 比 Provider 简单
 * 可以单独再dart使用。也可以再flutter中和 hooks搭配使用
