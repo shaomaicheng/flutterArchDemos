@@ -4,22 +4,25 @@ import 'home.dart';
 import 'hooksdemo/hooks_counter.dart';
 import 'inheriteddemo/counter_inherited.dart';
 import 'mobxdemo/mobxcounter.dart';
+import 'riverpoddemo/counter_riverpod_hooks.dart';
 
 void main() {
   runApp(MyApp());
 }
-
 
 class Routers {
   static String Mobx = 'mobx';
   static String Inherited = 'inherited';
   static String Hooks = 'hooks';
   static String Hooks_Reducer = "hooks_reducer";
+  static String RiverPod = 'riverpod';
+
   static var routers = {
-  Routers.Mobx: (context) => MobxDemo(),
-  Routers.Inherited:(context) => CounterInherited(),
-    Routers.Hooks:(ctx)=>HooksCounter(),
+    Routers.Mobx: (context) => MobxDemo(),
+    Routers.Inherited: (context) => CounterInherited(),
+    Routers.Hooks: (ctx) => HooksCounter(),
     Routers.Hooks_Reducer: (ctx) => HooksReducerCounter(),
+    Routers.RiverPod: (ctx) => CounterRiverpod()
   };
 }
 
